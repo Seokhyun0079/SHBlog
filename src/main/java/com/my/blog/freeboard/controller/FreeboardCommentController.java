@@ -42,7 +42,6 @@ public class FreeboardCommentController {
 
 		JSONObject obj = new JSONObject();
 		System.out.println("vo  " + vo);
-		System.out.println("변경용");
 //		obj.put("result", commentService.getCommentList(vo));
 	}
 }
