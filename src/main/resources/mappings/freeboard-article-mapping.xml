@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="FreeboardArticleDAO">
+
+	<resultMap type="freeboardArticle" id="articleResult">
+		<id column="article_no" property="articleNo" />
+		<result column="id" property="id" />
+		<result column="title" property="title"/>
+		<result column="content" property="content"/>
+		<result column="read_count" property="readCount"/>
+		<result column="recommend" property="recommend"/>
+	</resultMap>
+	<insert id="insertArticle">
+		insert into freeboard_article(id, recommend, read_count, title, content) 
+		values(#{id}, 0, 0, #{title}, #{content})
+	</insert>
+	<select id = "getArticle" resultType="freeboardArticle">
+		select * from freeboard_article where article_no = #{articleNo}
+	</select>
+	<select id = "getArticleList" resultMap="articleResult">
+	select * from freeboard_article order by article_no desc limit #{start}, 10
+	</select>
+	<select id = "getBest" resultMap="articleResult">
+		select * from freeboard_article order by read_count desc limit 5
+	</select>
+	<update id="increaseReadCount">
+		update freeboard_article set read_count = read_count +1  where article_no = #{articleNo}
+	</update>
+</mapper>

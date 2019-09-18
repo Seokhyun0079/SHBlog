@@ -1,0 +1,118 @@
+body {
+	margin : 0px; 
+	background-color: black;
+	color : white;
+}
+
+article {
+border : 2px solid white; 
+border-top : 0px; 
+background-color : black; 
+color : white; 
+}
+section{
+width : 70%;
+float : left; 
+	
+}
+.text-margin-updown{
+	margin-top : 5px;
+	margin-bottom : 5px;
+}
+
+
+h1{
+	margin-top : 0px;
+}
+
+h1{
+	display: inline-block;
+}
+.float-right{
+	float:right;	
+}
+aside {
+	border : 2px solid white;
+	float : left;  
+	background-color : black; 
+	margin : 2%;
+	color : white; 
+	width : 10%; 
+	padding-right : 10px;
+}
+.titleBar {
+	background-color : black; 
+	border-bottom :  2px solid white;  
+	height : 35px; 
+	display : block;
+}
+nav{
+	float : left;
+	border : 2px solid white;
+	margin : 2%;
+	padding-right : 10px;
+	width : 10%;
+}
+a{
+	text-decoration: none;
+	color : white;
+}
+a:visted{
+	color : white;	
+}
+div{
+}
+form{
+	width : 50%;
+	margin-left: auto;
+	margin-right: auto;
+}
+.login-form{
+
+	margin-left: auto;
+	margin-right: auto;
+	width : 50%;
+}
+
+.btn{
+	background: #515151;
+	border-color : #515151;
+	width : 100%;
+	margin: 20px;
+}
+.login-form *{
+		margin-left: auto;
+		margin-right: auto;
+}
+.input{
+	width : 100%; 
+}
+.input-border{
+	border-width: 2px;
+    border-style: inset;
+    border-color: initial;
+    border-image: initial;
+}
+.input-text{
+	background-color : black; 
+	color : white; 
+	width : 100%; 
+}
+.content{
+	border : 1px solid rgb(169, 169, 169) ;
+}
+.margin-auto{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.remove-margin{
+	margin : 0px;
+}
+.remove-border{
+	border: 0px;
+	border-width : 0px;
+}
+.hidden-input{
+	visibility : hidden;
+}
