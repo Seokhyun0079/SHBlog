@@ -11,16 +11,15 @@
 		<result column="regdate" property="regDate"/>
 	</resultMap>
 	<insert id="insertComment">
-		insert into freeboard_comment 
-		values(#{articleNo}, ifnull(max(comment_no), 0)+1 from freeboard_comment as f where article_no = #{articleNo}), #{id}, #{content}, #{regDate})
+		insert into freeboard_comment values(#{articleNo}, #{commentNo}, #{id}, #{content}, #{regDate})
 	</insert>
 	<select id="getCommentList" resultMap ="commentResult">
-		select * from freeboard_comment where article_no = #{articleNo}
+		select * from freeboard_comment where article_no = #{articleNo} and comment_no >= #{commentNo}
+	</select>
+	<select id="getCommentNo" resultType="int">
+		select ifnull(max(comment_no), 0) from freeboard_comment as f where article_no = #{articleNo}
 	</select>
 	<select id="getCommentCount" resultType="int">
 		select count(*) from freeboard_comment where article_no = #{articleNo}
-	</select>
-	<select id= "getCommentListLimit" resultMap="commentResult">
-		select * from freeboard_comment where article_no = #{articleNo} order by comment_no desc limit #{commentNo};
 	</select>
 </mapper>

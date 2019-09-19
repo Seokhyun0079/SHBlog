@@ -16,7 +16,10 @@ public class FreeboardCommentService {
 		return freeboardCommentDAO.getCommentList(vo);
 	}
 	public void insertComment(FreeboardComment vo) {
+		System.out.println("[FreeboardCommentService] insertComment");
+        vo.setCommentNo(freeboardCommentDAO.getCommentNo(vo)+1);
 		freeboardCommentDAO.insertComment(vo);
+		freeboardCommentDAO.commit();
 	}
 	public int getCommentCount(FreeboardComment vo) {
 		return freeboardCommentDAO.getCommentCount(vo);

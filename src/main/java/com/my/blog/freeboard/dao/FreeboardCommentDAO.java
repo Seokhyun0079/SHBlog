@@ -17,16 +17,18 @@ public class FreeboardCommentDAO {
 	}
 	public void insertComment(FreeboardComment vo) {
 		System.out.println("[FreeboardCommentDAO] insertComment");
-		mybatis.insert("freeboardCommentDAO.", vo);
+		mybatis.insert("freeboardCommentDAO.insertComment", vo);
 	}
 	public List<FreeboardComment> getCommentList(FreeboardComment vo){
 		System.out.println("[FreeboardCommentDAO] getCommentList");
 		return mybatis.selectList("freeboardCommentDAO.getCommentList", vo);
 	}
 	public int getCommentCount(FreeboardComment vo) {
-		// TODO Auto-generated method stub
 		System.out.println("[FreeboardCommentDAO] getCommentCount");
 		return (Integer)mybatis.selectOne("freeboardCommentDAO.getCommentCount", vo);
+	}
+	public int getCommentNo(FreeboardComment vo){
+		return (Integer)mybatis.selectOne("freeboardcommentDAO.getCommentNo", vo);
 	}
 	public void commit() {
 		mybatis.commit();
