@@ -24,6 +24,9 @@
 	<select id = "getBest" resultMap="articleResult">
 		select * from freeboard_article order by read_count desc limit 5
 	</select>
+	<select id ="getArticleCount" resultType="int">
+		select count(*) from freeboard_article;
+</select>
 	<update id="increaseReadCount">
 		update freeboard_article set read_count = read_count +1  where article_no = #{articleNo}
 	</update>

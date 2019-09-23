@@ -5,29 +5,27 @@ body {
 }
 
 article {
-border : 2px solid white; 
-border-top : 0px; 
-background-color : black; 
-color : white; 
+	border : 2px solid white;
+	border-top : 0px;
+	background-color : black;
+	color : white;
+	padding : 3%;
 }
 section{
-width : 70%;
-float : left; 
-	
+	width : 70%;
+	float : left;
+	margin-bottom: 30px;
 }
 .text-margin-updown{
 	margin-top : 5px;
 	margin-bottom : 5px;
 }
 
-
 h1{
 	margin-top : 0px;
-}
-
-h1{
 	display: inline-block;
 }
+
 .float-right{
 	float:right;	
 }
@@ -60,15 +58,12 @@ a{
 a:visted{
 	color : white;	
 }
-div{
-}
 form{
 	width : 50%;
 	margin-left: auto;
 	margin-right: auto;
 }
 .login-form{
-
 	margin-left: auto;
 	margin-right: auto;
 	width : 50%;
@@ -115,4 +110,22 @@ form{
 }
 .hidden-input{
 	visibility : hidden;
+}
+.margin-profit{
+	margin-left: 14.7%;
+}
+
+.border-top{
+	border-top : 2px solid white;
+}
+.pagenums{
+	width: 15%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+.pagenum{
+	display: inline-block;
+	margin-left: 5px;
+	margin-right: 5px;
 }

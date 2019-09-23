@@ -31,7 +31,7 @@
 <aside>
 	하루하루살이 몽유병 브라더스 : 라로로 고명빈
 </aside>
-<section>
+<section class="margin-profit border-top">
 <article>
 <h1>자유게시판</h1>
 <h1 class="float-right"><a href= "/freeboard/article/write.do">글쓰기</a></h1>

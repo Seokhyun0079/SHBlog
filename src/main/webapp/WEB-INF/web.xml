@@ -32,5 +32,13 @@
     <servlet-name>action</servlet-name>
     <url-pattern>*.do</url-pattern>
   </servlet-mapping>
-
+  <filter>
+    <filter-name>signinCheckFilter</filter-name>
+    <filter-class>com.my.blog.filter.SigninFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>signinCheckFilter</filter-name>
+    <url-pattern>/freeboard/article/write.do</url-pattern>
+    <url-pattern>/freeboard/comment/write.do</url-pattern>
+  </filter-mapping>
 </web-app>

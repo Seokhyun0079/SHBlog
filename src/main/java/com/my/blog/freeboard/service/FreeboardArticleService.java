@@ -26,9 +26,13 @@ public class FreeboardArticleService {
 		vo.setStart(vo.getPage()*10);
 		return freeboardArticleDAO.getArticleList(vo);
 	}
+	public int getArticleMaxPaage(){
+		int articleCount = freeboardArticleDAO.getArticleCount();
+		return (articleCount/10 + ( articleCount % 10 == 0 ? 0 : 1));
+	}
+
 	public List<FreeboardArticle> getBest() {
 		// TODO Auto-generated method stub
 		return freeboardArticleDAO.getBest();
 	}
-
 }

@@ -52,6 +52,7 @@ public class FreeboardArticleController {
 		System.out.println("[FreeboardController] /freeboard/article/list.do -> articleList()");
 		JSONObject obj = new JSONObject();
 		obj.put("result", freeboardArticleService.getArticleList(vo));
+		obj.put("maxPage", freeboardArticleService.getArticleMaxPaage());
 		res.setContentType("application/x-json; charset=UTF-8");
 		try {
 			res.getWriter().print(obj);

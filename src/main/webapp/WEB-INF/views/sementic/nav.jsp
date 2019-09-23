@@ -8,7 +8,7 @@
         </u:isLogin>
         <u:notLogin>
 	      <li><a href="/signin.do">로그인 </a></li>
+            <li><a href="/signup.do">회원가입</a></li>
         </u:notLogin>
-      <li><a href="/signup.do">회원가입</a></li>
    </ul>
 </nav>
