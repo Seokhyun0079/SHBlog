@@ -17,18 +17,21 @@
 <%@ include file="/WEB-INF/views/sementic/nav.jsp" %>
 <section>
 <article>
-<form action = "/freeboard/article/write.do" method ="post">
+<form action = "/freeboard/article/write.do" method ="post" enctype="multipart/form-data">
 	<br><h1>자유게시판</h1>
 	<input type="text" class="input-text" name="title" placeholder="제목을 입력해주세요"><br>
 	<br>
 	<textarea name = "content" class="input-text" rows="20" placeholder="내용을 입력해주세요"></textarea>
-			<button type ="submit" class="btn btn-danger remove-margin" >글쓰기</button><br><br><br>
+	<div>
+		<input id = "fileinput" style ="width : 0px; height : 0px;"  type = "file" name="uploadFile" onchange="$('#filename').val(this.value)">
+		<input class="input-text" id="filename" type="text" readonly><label  class="btn btn-danger remove-margin" for="fileinput">업로드</label>
+		<button type ="submit" class="btn btn-danger remove-margin" >글쓰기</button><br><br><br>
+	</div>
 </form>
 </article>
 </section>
 <aside>
 	하루하루살이 몽유병 브라더스 : 라로로 고명빈
 </aside>
-
 </body>
 </html>

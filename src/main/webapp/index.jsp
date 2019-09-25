@@ -36,6 +36,7 @@
 <h1>자유게시판</h1>
 <h1 class="float-right"><a href= "/freeboard/article/write.do">글쓰기</a></h1>
 <%@ include file="/WEB-INF/views/freeboard/list.jsp" %>
+	<h1 class="float-right" ><a href="/freeboard/main.do">더보기</a></h1>
 </article>
 </section>
 </body>

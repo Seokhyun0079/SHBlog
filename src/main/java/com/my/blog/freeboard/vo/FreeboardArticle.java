@@ -1,5 +1,7 @@
 package com.my.blog.freeboard.vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -10,8 +12,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+
 @Entity
-@Table(name = "freeboard_article")
 public class FreeboardArticle {
 	@Id
 	@GeneratedValue
@@ -22,13 +24,61 @@ public class FreeboardArticle {
 	private String title;
 	private String content;
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date regDate = new Date();
+	private Date regDate;
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date modDate = new Date();
+	private Date modDate;
+	private String fileName;
 	@Transient
 	private int page;
 	@Transient
 	private int start;
+	@Transient
+	private String searchCondition;
+	@Transient
+	private String searchKeyword;
+	@Transient
+    private MultipartFile uploadFile;
+	private int count;
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
+	public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public MultipartFile getUploadFile() {
+        return uploadFile;
+    }
+
+    public void setUploadFile(MultipartFile uploadFile) {
+        this.uploadFile = uploadFile;
+    }
+
+    public String getSearchCondition() {
+        return searchCondition;
+    }
+
+    public void setSearchCondition(String searchCondition) {
+        this.searchCondition = searchCondition;
+    }
+
+    public String getSearchKeyword() {
+		return searchKeyword;
+	}
+
+	public void setSearchKeyword(String searchKeyword) {
+		this.searchKeyword = searchKeyword;
+	}
 
 	public int getStart() {
 		return start;
@@ -91,11 +141,22 @@ public class FreeboardArticle {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	@Override
-	public String toString() {
-		return "FreeboardArticle [articleNo=" + articleNo + ", id=" + id + ", recommend=" + recommend + ", readCount="
-				+ readCount + ", title=" + title + ", content=" + content + ", regDate=" + regDate + ", modDate="
-				+ modDate + ", page=" + page + ", start=" + start + "]";
-	}
-	
+
+    @Override
+    public String toString() {
+        return "FreeboardArticle{" +
+                "articleNo=" + articleNo +
+                ", id='" + id + '\'' +
+                ", recommend=" + recommend +
+                ", readCount=" + readCount +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", regDate=" + regDate +
+                ", modDate=" + modDate +
+                ", page=" + page +
+                ", start=" + start +
+                ", searchCondition='" + searchCondition + '\'' +
+                ", searchKeyword='" + searchKeyword + '\'' +
+                '}';
+    }
 }

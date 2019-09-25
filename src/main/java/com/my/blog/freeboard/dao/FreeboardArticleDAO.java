@@ -30,8 +30,8 @@ public class FreeboardArticleDAO {
 	public void increaseReadCount(FreeboardArticle vo) {
 		mybatis.update("FreeboardArticleDAO.increaseReadCount", vo);
 	}
-	public int getArticleCount(){
-		return (Integer)mybatis.selectOne("FreeboardArticleDAO.getArticleCount");
+	public int getArticleCount(FreeboardArticle vo){
+		return (Integer)mybatis.selectOne("FreeboardArticleDAO.getArticleCount", vo);
 	}
 	public void commit() {
 		mybatis.commit();

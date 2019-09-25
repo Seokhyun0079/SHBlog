@@ -69,10 +69,13 @@ form{
 	width : 50%;
 }
 
+.width-full{
+	width: 100%;
+}
+
 .btn{
 	background: #515151;
 	border-color : #515151;
-	width : 100%;
 	margin: 20px;
 }
 .login-form *{
@@ -128,4 +131,11 @@ form{
 	display: inline-block;
 	margin-left: 5px;
 	margin-right: 5px;
+}
+h1{
+
+	font-size: 1.17em; margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	font-weight: bold;
 }

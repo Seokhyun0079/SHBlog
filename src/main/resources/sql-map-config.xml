@@ -5,9 +5,9 @@
 <configuration>
 	<properties resource="db.properties" />
 	<typeAliases>
-		<typeAlias type="com.my.blog.freeboard.vo.FreeboardArticle" alias="freeboardArticle"></typeAlias>
+		<typeAlias type="com.my.blog.freeboard.vo.FreeboardArticle" alias="freeboardArticle"/>
 		<typeAlias type="com.my.blog.freeboard.vo.FreeboardComment" alias="freeboardComment"/>
-		<typeAlias type="com.my.blog.member.vo.MemberVO" alias="member"></typeAlias>
+		<typeAlias type="com.my.blog.member.vo.MemberVO" alias="member"/>
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">

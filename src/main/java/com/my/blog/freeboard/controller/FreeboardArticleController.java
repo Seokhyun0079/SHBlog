@@ -1,6 +1,8 @@
 package com.my.blog.freeboard.controller;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +19,7 @@ import com.my.blog.freeboard.vo.FreeboardArticle;
 import com.my.blog.member.vo.User;
 
 import net.sf.json.JSONObject;
+import org.springframework.web.multipart.MultipartFile;
 
 
 @Controller
@@ -29,9 +32,13 @@ public class FreeboardArticleController {
 	}
 	
 	@RequestMapping(value = "/freeboard/article/write.do",  method = RequestMethod.POST)
-	public String writeArticlePost(HttpSession session, FreeboardArticle vo) {
+	public String writeArticlePost(HttpSession session, FreeboardArticle vo) throws IOException{
 		System.out.println("[FreeboardController] /freeboard/article/write.do Post -> writeArticlePost()");
 		vo.setId(((User)session.getAttribute("authUser")).getId());
+		if(!vo.getUploadFile().isEmpty()){
+			vo.setFileName(new Date().getTime()+ vo.getUploadFile().getOriginalFilename());
+			vo.getUploadFile().transferTo(new File("D:/Programings/SpringWorkSpace/MySpring/src/main/webapp/resources/upload/"+vo.getFileName()));
+		}
 		freeboardArticleService.insertArticle(vo);
 		return "redirect:/";
 	}
@@ -52,7 +59,7 @@ public class FreeboardArticleController {
 		System.out.println("[FreeboardController] /freeboard/article/list.do -> articleList()");
 		JSONObject obj = new JSONObject();
 		obj.put("result", freeboardArticleService.getArticleList(vo));
-		obj.put("maxPage", freeboardArticleService.getArticleMaxPaage());
+		obj.put("maxPage", freeboardArticleService.getArticleMaxPaage(vo));
 		res.setContentType("application/x-json; charset=UTF-8");
 		try {
 			res.getWriter().print(obj);

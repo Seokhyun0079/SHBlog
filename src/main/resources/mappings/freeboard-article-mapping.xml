@@ -2,7 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="FreeboardArticleDAO">
-
 	<resultMap type="freeboardArticle" id="articleResult">
 		<id column="article_no" property="articleNo" />
 		<result column="id" property="id" />
@@ -10,23 +9,38 @@
 		<result column="content" property="content"/>
 		<result column="read_count" property="readCount"/>
 		<result column="recommend" property="recommend"/>
+		<result column="file_name" property="fileName"/>
+		<result column="regdate" property="regDate"/>
+		<result column="moddate" property="modDate"/>
+		<result column="count" property="count"/>
 	</resultMap>
 	<insert id="insertArticle">
-		insert into freeboard_article(id, recommend, read_count, title, content) 
-		values(#{id}, 0, 0, #{title}, #{content})
+		insert into freeboard_article(id, recommend, read_count, title, content, file_name, regdate, moddate)
+		values(#{id}, 0, 0, #{title}, #{content}, #{fileName}, now(), now())
 	</insert>
-	<select id = "getArticle" resultType="freeboardArticle">
+	<select id = "getArticle" resultMap="articleResult">
 		select * from freeboard_article where article_no = #{articleNo}
 	</select>
 	<select id = "getArticleList" resultMap="articleResult">
-	select * from freeboard_article order by article_no desc limit #{start}, 10
+		select * from freeboard_article left join
+		(select fac.article_no ,count(*) as count from freeboard_comment as fac group by fac.article_no)
+		as fac on freeboard_article.article_no = fac.article_no WHERE 1
+	<if test ="searchCondition =='TITLE'">AND TITLE LIKE #{searchKeyword}</if>
+	<if test="searchCondition =='CONTENT'">AND CONTENT LIKE #{searchKeyword}</if>
+	<if test="searchCondition =='WRITER'"> AND ID = #{searchKeyword} </if>
+	order by freeboard_article.article_no desc limit #{start}, 10
 	</select>
 	<select id = "getBest" resultMap="articleResult">
-		select * from freeboard_article order by read_count desc limit 5
+				select * from freeboard_article left join
+		(select fac.article_no ,count(*) as count from freeboard_comment as fac group by fac.article_no)
+		as fac on freeboard_article.article_no = fac.article_no order by read_count desc limit 5
 	</select>
 	<select id ="getArticleCount" resultType="int">
-		select count(*) from freeboard_article;
-</select>
+		select count(*) from freeboard_article WHERE 1
+		<if test="searchCondition =='TITLE'">AND TITLE LIKE #{searchKeyword}</if>
+		<if test="searchCondition =='CONTENT'">AND CONTENT LIKE #{searchKeyword}</if>
+		<if test="searchCondition =='WRITER'"> AND ID = #{searchKeyword} </if>
+	</select>
 	<update id="increaseReadCount">
 		update freeboard_article set read_count = read_count +1  where article_no = #{articleNo}
 	</update>

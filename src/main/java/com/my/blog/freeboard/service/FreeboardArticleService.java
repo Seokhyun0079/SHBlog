@@ -24,15 +24,23 @@ public class FreeboardArticleService {
 	public List<FreeboardArticle> getArticleList(FreeboardArticle vo) {
 		// TODO Auto-generated method stub
 		vo.setStart(vo.getPage()*10);
+		setSearchKeywordForm(vo);
 		return freeboardArticleDAO.getArticleList(vo);
 	}
-	public int getArticleMaxPaage(){
-		int articleCount = freeboardArticleDAO.getArticleCount();
+	public int getArticleMaxPaage(FreeboardArticle vo){
+		setSearchKeywordForm(vo);
+		int articleCount = freeboardArticleDAO.getArticleCount(vo);
 		return (articleCount/10 + ( articleCount % 10 == 0 ? 0 : 1));
 	}
 
 	public List<FreeboardArticle> getBest() {
 		// TODO Auto-generated method stub
 		return freeboardArticleDAO.getBest();
+	}
+
+	private void setSearchKeywordForm(FreeboardArticle vo){
+		if(vo.getSearchCondition()!= null && !vo.getSearchCondition().equals("WRITER")){
+			vo.setSearchKeyword("%"+vo.getSearchKeyword()+"%");
+		}
 	}
 }
