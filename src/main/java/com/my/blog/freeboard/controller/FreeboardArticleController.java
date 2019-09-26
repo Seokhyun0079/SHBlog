@@ -64,7 +64,6 @@ public class FreeboardArticleController {
 		try {
 			res.getWriter().print(obj);
 		}catch(IOException e) {}
-//		model.addAttribute("freeboardList", freeboardArticleService.getArticleList(vo));
 	}
 	@RequestMapping("/freeboard/article/best.do")
 	public void articleBest(HttpServletResponse res) {
